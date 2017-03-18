@@ -63,18 +63,18 @@ We recommend the first way. The script would ask you for the root password of th
 * database for ccnet/seafile/seahub.
 * a new user to access these databases
 
-However, sometimes you have to use the second way. If you don't have the root password, you need someone who has the privileges, e.g., the database admin, to create the three databases, as well as a mysql user who can access the three databases for you. For example, to create three databases: `ccnet-db` / `seafile-db` / `seahub-db` for ccnet/seafile/seahub respectively, and a mysql user "seafile" to access these databases run the following SQL queries:
+However, sometimes you have to use the second way. If you don't have the root password, you need someone who has the privileges, e.g., the database admin, to create the three databases, as well as a mysql user who can access the three databases for you. For example, to create three databases: `ccnet_db` / `seafile_db` / `seahub_db` for ccnet/seafile/seahub respectively, and a mysql user "seafile" to access these databases run the following SQL queries:
 
 ```
-create database `ccnet-db` character set = 'utf8';
-create database `seafile-db` character set = 'utf8';
-create database `seahub-db` character set = 'utf8';
+create database `ccnet_db` character set = 'utf8';
+create database `seafile_db` character set = 'utf8';
+create database `seahub_db` character set = 'utf8';
 
 create user 'seafile'@'localhost' identified by 'seafile';
 
-GRANT ALL PRIVILEGES ON `ccnet-db`.* to `seafile`@localhost;
-GRANT ALL PRIVILEGES ON `seafile-db`.* to `seafile`@localhost;
-GRANT ALL PRIVILEGES ON `seahub-db`.* to `seafile`@localhost;
+GRANT ALL PRIVILEGES ON `ccnet_db`.* to `seafile`@localhost;
+GRANT ALL PRIVILEGES ON `seafile_db`.* to `seafile`@localhost;
+GRANT ALL PRIVILEGES ON `seahub_db`.* to `seafile`@localhost;
 ```
 
 ## Setting Up Seafile Server
@@ -177,8 +177,8 @@ If you choose "[2] Use existing ccnet/seafile/seahub databases", you would be as
 | mysql user for Seafile | the user for Seafile programs to use to access MySQL server | the user must already exists |
 | password for Seafile mysql user | the password for the user above | |
 | ccnet dabase name | the name of the database used by ccnet | this database must already exist |
-| seafile dabase name | the name of the database used by Seafile, default is "seafile-db" | this database must already exist |
-| seahub dabase name | the name of the database used by Seahub, default is "seahub-db" | this database must already exist |
+| seafile dabase name | the name of the database used by Seafile, default is "seafile_db" | this database must already exist |
+| seahub dabase name | the name of the database used by Seahub, default is "seahub_db" | this database must already exist |
 
 
 If the setup is successful, you'll see the following output
@@ -326,9 +326,9 @@ mysql root password | -r | MYSQL_ROOT_PASSWD | no default value(must be set when
 mysql user for seafile | -u | MYSQL_USER | no default value(must be set)
 password for seafile mysql user | -w | MYSQL_USER_PASSWD | no default value(must be set)
 mysql user host | -q | MYSQL_USER_HOST | no default value(must be set when create new db and using non local mysql server)
-ccnet dabase name | -c | CCNET_DB | ccnet-db
-seafile dabase name | -s | SEAFILE_DB | seafile-db
-seahub dabase name | -b | SEAHUB_DB | seahub-db
+ccnet dabase name | -c | CCNET_DB | ccnet_db
+seafile dabase name | -s | SEAFILE_DB | seafile_db
+seahub dabase name | -b | SEAHUB_DB | seahub_db
 
 **Note: If both script parameter and environment variable assigned, script parameter has higher priority. If neither script parameter nor environment variable assigned, default value will be used.**
 
